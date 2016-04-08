@@ -7,8 +7,15 @@ import socket
 import struct
 import sys
 import time
+import json
 
-message = 'Hostname: Mortencam'
+values = {'hostname': 'Morten',
+		  'resolutionon': ['1920x480'],
+		  'capabibility': ['png']}
+
+message = json.dumps( values, sort_keys=True, indent=4, separators=(',', ': '))
+
+#message = "Hostname: \tCam_of_Cham \nResolution: \t1920x1080 , 640x480 \nCapabibility: \tpng, jpeg , avi , mp4" 	 
 multicast_group = ('224.3.29.71', 10000)
 
 # Create the datagram socket
